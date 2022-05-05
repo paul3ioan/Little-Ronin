@@ -1,20 +1,15 @@
 import React, { useEffect, useMemo } from 'react'
-import { ButtonSectionContainer, WarningMessage } from './styles';
+import { ButtonSectionContainer, WarningMessage, Mintable } from './styles';
 import { useSelector } from "react-redux";
 import BuySection from './buy-section';
 import ConnectSection from '../connect-section';
-const ButtonSection = (props) => {
-    const {id} = props;
+const ButtonSection = () => {
     const data = useSelector(state =>state.data);
     const totalSupply = useMemo(() =>{
-        return id===1 ? data.totalSupplyFirst : (id === 2 ? data.totalSupplySecond : ( id=== 3 ? data.totalSupplyThird :data.totalSupplyFourth))
+        return data.totalSupply
     },[data])
     const blockchain = useSelector((state) => state.blockchain);
-    const maxSupplyFirst = 9090;
-    const maxSupplyFourth = 10;
-    const maxSupplySecond = 800;
-    const maxSupplyThird = 100;
-    const maxSupply = id === 1 ? maxSupplyFirst :( id === 2 ? maxSupplySecond :( id === 3 ? maxSupplyThird : maxSupplyFourth));
+    const maxSupply = 10000;
 if(!blockchain.account)
  return (
     <ButtonSectionContainer >
@@ -25,7 +20,8 @@ if(!blockchain.account)
  )
   return (
     <ButtonSectionContainer>
-        <BuySection maxSupply = {maxSupply} totalSupply = {totalSupply} id = {id}/>
+        <Mintable className={"bold-text"}>{`You can mint ${data.numAva} more nfts`}</Mintable>
+        <BuySection maxSupply = {maxSupply} totalSupply = {totalSupply} />
     </ButtonSectionContainer>
   )
 }

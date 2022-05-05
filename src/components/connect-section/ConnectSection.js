@@ -15,13 +15,13 @@ const ConnectSection = () => {
         getData();       
     }, [blockchain.account]);
   return (
-    <ConnectButtonContainer onClick = {(e)=>{
+    <div className ="button mint-button w-button" onClick = {(e)=>{
         e.preventDefault();
         dispatch(connect());
         getData();
     }}>
-        <ConnectButtonText> Connect</ConnectButtonText>
-    </ConnectButtonContainer>
+        <strong className="bold-text">Connect</strong>
+    </div>
   )
 }
 

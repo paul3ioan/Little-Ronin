@@ -3,8 +3,7 @@ import { BuyContainer, BuyInput, MintButton } from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "./../../../redux/data/dataActions";
 import { mainContract } from "./../../../absolutePath";
-const BuySection = (props) => {
-  const { id } = props;
+const BuySection = () => {
 
   const dispatch = useDispatch();
   const blockchain = useSelector((state) => state.blockchain);
@@ -24,7 +23,7 @@ const BuySection = (props) => {
     const mintAmount = parseInt(amount);
     if (mintAmount === 0 || !mintAmount) return;
 
-    let cost = id === 1 ? data.costFirst: id === 2 ? data.costSecond : id === 3 ? data.costThird : data.costFourth;
+    let cost = data.cost;
     let gasLimit = 300000;
     let price = BigInt(cost * amount);
     let totalCostWei = String(price);
@@ -33,7 +32,7 @@ const BuySection = (props) => {
     console.log("Gas limit: ", totalGasLimit);
     setClaimingNft(true);
     blockchain.smartContract.methods
-      .mint(Number(amount), id)
+      .mint(Number(amount))
       .send({
         to: mainContract.CONTRACT_ADDRESS,
         from: blockchain.account,
@@ -53,12 +52,17 @@ const BuySection = (props) => {
   return (
     <BuyContainer>
       <BuyInput
-        value={amount}
+        className= "bold-text"
+        placeholder ={'Amount:...'}
+        value={amount === '0' ? "" : amount}
         onChange={(e) => {
+          console.log(data, parseInt(e.target.value) ,  parseInt(data.numAva) >= parseInt(e.target.value), parseInt(e.target.value) + parseInt(data.supply) <=  parseInt(data.totalSupply))
+          if(data && !isNaN(e.target.value) &&   parseInt(data.numAva) >= parseInt(e.target.value) && parseInt(e.target.value) + parseInt(data.supply) <=  parseInt(data.totalSupply))
           setAmount(e.target.value);
+          if(e.target.value === '') setAmount('0');
         }}
       />
-      <MintButton
+      <div className ="button mint-button w-button"
         onClick={(e) => {
           e.preventDefault();
           {
@@ -66,8 +70,8 @@ const BuySection = (props) => {
           }
         }}
       >
-        Mint
-      </MintButton>
+        <strong className="bold-text">Mint</strong>
+      </div>
     </BuyContainer>
   );
 };

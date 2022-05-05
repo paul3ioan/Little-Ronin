@@ -29,47 +29,20 @@ export const fetchData = (account) => {
       
         let totalSupply = await store
         .getState()
-        .blockchain.smartContract.methods.totalSupply().call();
-        let costFirst = await store
+        .blockchain.smartContract.methods.maxSupply().call();
+        let supply = await store.getState()
+        .blockchain.smartContract.methods.currentSupply().call();
+        let cost = await store
         .getState()
-        .blockchain.smartContract.methods.costFirst().call();
-        let costSecond = await store
-        .getState()
-        .blockchain.smartContract.methods.costSecond().call();
-        let costThird = await store
-        .getState()
-        .blockchain.smartContract.methods.costThird().call();
-        let totalSupplyFirst = await store
-        .getState()
-        .blockchain.smartContract.methods.firstSupply().call();
-
-        let totalSupplySecond = await store
-        .getState()
-        .blockchain.smartContract.methods.secondSupply().call();
-       
-        let totalSupplyThird = await store
-        .getState()
-        .blockchain.smartContract.methods.thirdSupply().call();
-        let totalSupplyFourth = await store
-        .getState()
-        .blockchain.smartContract.methods.fourthSupply().call();
-        let costFourth = await store
-        .getState()
-        .blockchain.smartContract.methods.costFourth().call();
-
-
- 
+        .blockchain.smartContract.methods.cost().call();
+        let numAva = await store.getState()
+        .blockchain.smartContract.methods.numAvailableToMint(account).call();
       dispatch(
         fetchDataSuccess({
           totalSupply,
-          totalSupplyFirst,
-          totalSupplySecond,
-          totalSupplyThird,
-          totalSupplyFourth,
-          costFirst,
-          costSecond,
-          costThird,
-          costFourth,
+          supply,
+          cost,
+          numAva,
         })
       );
     } catch (err) {

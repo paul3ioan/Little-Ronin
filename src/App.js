@@ -3,7 +3,7 @@ import ButtonSection from './components/button-section'
 const App = (props) => {
   return (
     <div className='App'>
-        <ButtonSection id ={props.id}/>
+        <ButtonSection/>
     </div>
   )
 }

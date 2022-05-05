@@ -10,6 +10,9 @@ export const ButtonSectionContainer = styled.div`
     padding:10px ;
     padding-bottom:30px;
 `;
+export const Mintable = styled.strong`
+    margin-bottom: 10px;
+`;
 export const WarningMessage = styled.p`
     color:white!important;
     font-size:20px;
