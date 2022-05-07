@@ -63,6 +63,7 @@ const BuySection = () => {
         }}
       />
       <div className ="button mint-button w-button"
+      style={{width:"40%", display:"flex",minWidth:"150px", justifyContent:"center"}}
         onClick={(e) => {
           e.preventDefault();
           {

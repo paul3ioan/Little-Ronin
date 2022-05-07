@@ -1,0 +1,17 @@
+You just need to npm install and npm build to get the bulid file and drag and drop on netlify on deploy mnually
+After this the website is live and ready to go
+We use emailjs for the email forms in react 
+It is an api which let you send 200 emails free per day if you will need more you will need to pay something like 5-7$ a month
+for this you need to ceate an google account or use one
+after you finish this step you will be on dashboard 
+first you need to locate in EmailForm.jsx and SendAMessageForm.jsx the sendEmail() function(first 30 line of code)
+Now you will need to create a service. Go on emailjs =>Email services create a srvice which uses gmail
+After that you will have a service-id which needs to be the first param in emailjs.send()
+Ex: emailjs.send('YOUR_SERVICE_ID', 'template_mi1bri1', {email, message, phoneNumber, lastName, firstName}, "tKQab6k1GCmmOaiHx")
+now you need to create a template here you can make it as you want, but the info from the web app 
+is called by {{email}} or {{message}} and so on. Don't change the name from the code change it from the template
+After you have your template done change like this :
+emailjs.send('service_esf32jg', 'TEMPLATE_ID', {email, message, phoneNumber, lastName, firstName}, "tKQab6k1GCmmOaiHx")
+Now the {email,message ...} will not be changed and the last "tKQab6k1GCmmOaiHx" is your emailjs public id
+you get it from dashboard->account -> public key
+Good luck if you have questions just ask
