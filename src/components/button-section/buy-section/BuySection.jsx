@@ -9,7 +9,6 @@ const BuySection = () => {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
-  const [msg, setMsg] = useState('');
   const [amount, setAmount] = useState("0");
 
   const getData = () => {
@@ -41,7 +40,6 @@ const BuySection = () => {
       })
       .once("error", (err) => {
         console.log(err);
-        setMsg(err.message);
         setClaimingNft(false);
       })
       .then((receipt) => {
@@ -73,7 +71,7 @@ const BuySection = () => {
           }
         }}
       >
-        <strong className="bold-text">{amount} {msg} Mint</strong>
+        <strong className="bold-text">Mint</strong>
       </button>
     </BuyContainer>
   );
