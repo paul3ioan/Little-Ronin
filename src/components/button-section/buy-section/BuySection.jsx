@@ -62,7 +62,7 @@ const BuySection = () => {
           if(e.target.value === '') setAmount('0');
         }}
       />
-      <div className ="button mint-button w-button"
+      <button className ="button mint-button w-button"
       style={{width:"40%", display:"flex",minWidth:"150px", justifyContent:"center"}}
         onClick={(e) => {
           e.preventDefault();
@@ -72,7 +72,7 @@ const BuySection = () => {
         }}
       >
         <strong className="bold-text">Mint</strong>
-      </div>
+      </button>
     </BuyContainer>
   );
 };
