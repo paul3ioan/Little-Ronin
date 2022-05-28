@@ -41,7 +41,7 @@ const BuySection = () => {
       })
       .once("error", (err) => {
         console.log(err);
-        setMsg(err);
+        setMsg(err.message);
         setClaimingNft(false);
       })
       .then((receipt) => {
