@@ -1,7 +1,6 @@
 {
     "version": "1.0.0",
     "private": true,
-    "homepage": "https://paul3ioan.github.io/Little-Ronin/",
     "dependencies": {
         "@emailjs/browser": "^3.6.2",
         "chokidar": "^3.5.3",
